@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathUtil.MonoGame", "MathUtil.MonoGame\MathUtil.MonoGame.csproj", "{54A1E394-854B-4627-8D9C-BF0A4C2788F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathUtil.Godot", "MathUtil.Godot\MathUtil.Godot.csproj", "{386CE7DE-F22F-4E07-8C17-5799EFE48603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathUtil.Numerics", "MathUtil.Numerics\MathUtil.Numerics.csproj", "{1A7CC243-58D3-4D70-A5BC-09E7179A1E89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54A1E394-854B-4627-8D9C-BF0A4C2788F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A1E394-854B-4627-8D9C-BF0A4C2788F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A1E394-854B-4627-8D9C-BF0A4C2788F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A1E394-854B-4627-8D9C-BF0A4C2788F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386CE7DE-F22F-4E07-8C17-5799EFE48603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386CE7DE-F22F-4E07-8C17-5799EFE48603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386CE7DE-F22F-4E07-8C17-5799EFE48603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386CE7DE-F22F-4E07-8C17-5799EFE48603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7CC243-58D3-4D70-A5BC-09E7179A1E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7CC243-58D3-4D70-A5BC-09E7179A1E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7CC243-58D3-4D70-A5BC-09E7179A1E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7CC243-58D3-4D70-A5BC-09E7179A1E89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
