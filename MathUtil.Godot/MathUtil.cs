@@ -594,4 +594,15 @@ public static class MathUtil
         vector = point + rotation * (vector - point);
         return vector;
     }
+
+    public static Basis BasisFromNormal(Vector3 back, Vector3 right, Vector3 normal)
+    {
+        var result = Basis.Identity with {
+            X = normal.Cross(back),
+            Y = normal,
+            Z = right.Cross(normal)
+        };
+
+        return result.Orthonormalized();
+    }
 }

@@ -582,4 +582,20 @@ public static class MathUtil
         vector = point + Vector3.Transform(vector - point, rotation);
         return vector;
     }
+
+    public static Matrix4x4 BasisFromNormal(Vector3 back, Vector3 right, Vector3 normal)
+    {
+        var c0 = Vector3.Cross(normal, back);
+        var c1 = normal;
+        var c2 = Vector3.Cross(right, normal);
+
+        Matrix4x4 result = new(
+            c0.X, c1.X, c2.X, 0,
+            c0.Y, c1.Y, c2.Y, 0,
+            c0.Z, c1.Z, c2.Z, 0,
+            0,    0,    0,    1
+        );
+
+        return result;
+    }
 }

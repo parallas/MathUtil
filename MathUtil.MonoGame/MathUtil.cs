@@ -581,4 +581,15 @@ public static class MathUtil
         vector = point + Vector3.Transform(vector - point, rotation);
         return vector;
     }
+
+    public static Matrix BasisFromNormal(Vector3 back, Vector3 right, Vector3 normal)
+    {
+        var result = Matrix.Identity with {
+            Right = Vector3.Cross(normal, back),
+            Up = normal,
+            Backward = Vector3.Cross(right, normal)
+        };
+
+        return result;
+    }
 }
