@@ -2,6 +2,9 @@ using System.Drawing;
 
 namespace Parallas;
 
+/// <summary>
+/// Source code: https://github.com/parallas/MathUtil
+/// </summary>
 public static class MathColor
 {
     public static Color CornflowerBlue { get; } = Color.FromArgb(100, 149, 237);

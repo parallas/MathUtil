@@ -2,6 +2,9 @@ using Godot;
 
 namespace Parallas;
 
+/// <summary>
+/// Source code: https://github.com/parallas/MathUtil
+/// </summary>
 public static class MathColor
 {
     public static Color CornflowerBlue { get; } = new(100/255f, 149/255f, 237/255f);

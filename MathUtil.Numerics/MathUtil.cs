@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace Parallas;
 
+/// <summary>
+/// Source code: https://github.com/parallas/MathUtil
+/// </summary>
 public static class MathUtil
 {
     public static float Approach(float value, float target, float rate)
