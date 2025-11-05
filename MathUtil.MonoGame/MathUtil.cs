@@ -592,4 +592,17 @@ public static class MathUtil
 
         return result;
     }
+
+    /// <summary>
+    /// Produces a Quaternion rotation that represents the rotation required to change a Vector3 pointing in the
+    /// positive-z direction to <paramref name="facingDirection" />. The <paramref name="up"/> vector is used to
+    /// prevent unwanted skewing.
+    /// </summary>
+    /// <param name="facingDirection">The direction the quaternion should rotate towards.</param>
+    /// <param name="up">The axis vector used to prevent skewing.</param>
+    /// <returns>A quaternion that represents the rotation to <paramref name="facingDirection"/>.</returns>
+    public static Quaternion LookRotation(Vector3 facingDirection, Vector3 up)
+    {
+        return Quaternion.CreateFromRotationMatrix(Matrix.CreateWorld(Vector3.Zero, facingDirection, up));
+    }
 }
