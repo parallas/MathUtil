@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 
 namespace Parallas;
 
@@ -10,34 +11,34 @@ public static class MathUtil
     public static float Approach(float value, float target, float rate)
     {
         if(value < target)
-            return Math.Min(value + rate, target);
+            return Mathf.Min(value + rate, target);
         else
-            return Math.Max(value - rate, target);
+            return Mathf.Max(value - rate, target);
     }
 
     public static float Approach(ref float value, float target, float rate)
     {
         if(value < target)
-            value = Math.Min(value + rate, target);
+            value = Mathf.Min(value + rate, target);
         else
-            value = Math.Max(value - rate, target);
+            value = Mathf.Max(value - rate, target);
         return value;
     }
 
     public static int Approach(int value, int target, int rate)
     {
         if(value < target)
-            return Math.Min(value + rate, target);
+            return Mathf.Min(value + rate, target);
         else
-            return Math.Max(value - rate, target);
+            return Mathf.Max(value - rate, target);
     }
 
     public static int Approach(ref int value, int target, int rate)
     {
         if(value < target)
-            value = Math.Min(value + rate, target);
+            value = Mathf.Min(value + rate, target);
         else
-            value = Math.Max(value - rate, target);
+            value = Mathf.Max(value - rate, target);
         return value;
     }
 
@@ -54,7 +55,7 @@ public static class MathUtil
 
     public static float ApproachNotExceeding(float value, float target, float rate)
     {
-        if(Math.Abs(value) < Math.Abs(target))
+        if(Mathf.Abs(value) < Mathf.Abs(target))
             value = Approach(value, target, rate);
         return value;
     }
@@ -70,9 +71,9 @@ public static class MathUtil
 
     public static float MoveTo(float value, float target, float accel, float decel)
     {
-        if(Math.Abs(value) < Math.Abs(target))
+        if(Mathf.Abs(value) < Mathf.Abs(target))
             value = Approach(value, target, accel);
-        if(Math.Abs(value) > Math.Abs(target))
+        if(Mathf.Abs(value) > Mathf.Abs(target))
             value = Approach(value, target, decel);
         return value;
     }
@@ -105,7 +106,7 @@ public static class MathUtil
 
     public static float Sqrt(float value)
     {
-        return MathF.Sqrt(value);
+        return Mathf.Sqrt(value);
     }
 
     public static float Sqr(float value)
@@ -125,12 +126,12 @@ public static class MathUtil
 
     public static float Snap(float value, float interval)
     {
-        return MathF.Floor(value / interval) * interval;
+        return Mathf.Floor(value / interval) * interval;
     }
 
     public static float Snap(ref float value, float interval)
     {
-        value = MathF.Floor(value / interval) * interval;
+        value = Mathf.Floor(value / interval) * interval;
         return value;
     }
 
@@ -164,12 +165,12 @@ public static class MathUtil
 
     public static float SnapCeiling(float value, float interval)
     {
-        return MathF.Ceiling(value / interval) * interval;
+        return Mathf.Ceil(value / interval) * interval;
     }
 
     public static float SnapCeiling(ref float value, float interval)
     {
-        value = MathF.Ceiling(value / interval) * interval;
+        value = Mathf.Ceil(value / interval) * interval;
         return value;
     }
 
@@ -203,32 +204,32 @@ public static class MathUtil
 
     public static int AbsMax(int value, int max)
     {
-        return Math.Max(Math.Abs(value), Math.Abs(max)) * Math.Sign(value);
+        return Mathf.Max(Mathf.Abs(value), Mathf.Abs(max)) * Mathf.Sign(value);
     }
 
     public static int AbsMin(int value, int min)
     {
-        return Math.Min(Math.Abs(value), Math.Abs(min)) * Math.Sign(value);
+        return Mathf.Min(Mathf.Abs(value), Mathf.Abs(min)) * Mathf.Sign(value);
     }
 
     public static int RoundToInt(float value)
     {
-        return (int)Math.Round(value);
+        return (int)Mathf.Round(value);
     }
 
     public static int CeilToInt(float value)
     {
-        return (int)Math.Ceiling(value);
+        return (int)Mathf.Ceil(value);
     }
 
     public static int FloorToInt(float value)
     {
-        return (int)Math.Floor(value);
+        return (int)Mathf.Floor(value);
     }
 
     public static int ClampToInt(float value, int a, int b)
     {
-        return (int)Math.Clamp(value, a, b);
+        return (int)Mathf.Clamp(value, a, b);
     }
 
     public static float InverseLerp(float a, float b, float t)
@@ -243,7 +244,7 @@ public static class MathUtil
 
     public static float Clamp01(float value)
     {
-        return Math.Clamp(value, 0, 1);
+        return Mathf.Clamp(value, 0, 1);
     }
 
     /// <summary>
@@ -256,37 +257,37 @@ public static class MathUtil
     /// <returns></returns>
     public static float ExpDecay(float a, float b, float decay, float dt)
     {
-        return b+(a-b)*MathF.Exp(-decay*dt);
+        return b+(a-b)*Mathf.Exp(-decay*dt);
     }
 
     public static Vector2 ExpDecay(Vector2 a, Vector2 b, float decay, float dt)
     {
-        return b+(a-b)*MathF.Exp(-decay*dt);
+        return b+(a-b)*Mathf.Exp(-decay*dt);
     }
 
     public static Vector3 ExpDecay(Vector3 a, Vector3 b, float decay, float dt)
     {
-        return b+(a-b)*MathF.Exp(-decay*dt);
+        return b+(a-b)*Mathf.Exp(-decay*dt);
     }
 
     public static Quaternion ExpDecay(Quaternion a, Quaternion b, float decay, float dt)
     {
-        return a.Slerp(b, 1 - MathF.Exp(-decay * dt));
+        return a.Slerp(b, 1 - Mathf.Exp(-decay * dt));
     }
 
     public static int Sign(float a)
     {
-        return MathF.Sign(a);
+        return Mathf.Sign(a);
     }
 
     public static bool Approximately(float a, float b, float threshold)
     {
-        return MathF.Abs(a - b) < threshold;
+        return Mathf.Abs(a - b) < threshold;
     }
 
     public static float SmoothCos(float value, float exp)
     {
-        return MathF.Pow(-0.5f * MathF.Cos(value * MathF.PI) + 0.5f, exp);
+        return Mathf.Pow(-0.5f * Mathf.Cos(value * Mathf.Pi) + 0.5f, exp);
     }
 
     public static float SmoothCosClamp(float value, float exp)
@@ -307,13 +308,14 @@ public static class MathUtil
     public static Vector3 RandomInsideUnitSphere() {
         var u = Random.Shared.NextSingle();
         var v = Random.Shared.NextSingle();
-        var theta = u * 2.0f * MathF.PI;
-        var phi = MathF.Acos(2.0f * v - 1.0f);
-        var r = MathF.Cbrt(Random.Shared.NextSingle());
-        var sinTheta = MathF.Sin(theta);
-        var cosTheta = MathF.Cos(theta);
-        var sinPhi = MathF.Sin(phi);
-        var cosPhi = MathF.Cos(phi);
+        var theta = u * 2.0f * Mathf.Pi;
+        var phi = Mathf.Acos(2.0f * v - 1.0f);
+        // using System.MathF here because Godot.Mathf is missing the Cbrt method
+        var r = System.MathF.Cbrt(Random.Shared.NextSingle());
+        var sinTheta = Mathf.Sin(theta);
+        var cosTheta = Mathf.Cos(theta);
+        var sinPhi = Mathf.Sin(phi);
+        var cosPhi = Mathf.Cos(phi);
         var x = r * sinPhi * cosTheta;
         var y = r * sinPhi * sinTheta;
         var z = r * cosPhi;
@@ -437,27 +439,27 @@ public static class MathUtil
 
     public static float ResponseCurveSine(float x)
     {
-        const float halfPi = MathF.PI / 2.0f;
-        return Math.Sign(x) * (-MathF.Sin(halfPi * x + halfPi) + 1.0f);
+        const float halfPi = Mathf.Pi / 2.0f;
+        return Mathf.Sign(x) * (-Mathf.Sin(halfPi * x + halfPi) + 1.0f);
     }
 
     public static double ResponseCurveSine(double x)
     {
-        const double halfPi = Math.PI / 2.0;
-        return Math.Sign(x) * (-Math.Sin(halfPi * x + halfPi) + 1.0);
+        const double halfPi = Mathf.Pi / 2.0;
+        return Mathf.Sign(x) * (-Mathf.Sin(halfPi * x + halfPi) + 1.0);
     }
 
     // broken for unknown reason
     public static float ResponseCurveTan(float x)
     {
-        const float quarterPi = MathF.PI / 4.0f;
-        return MathF.Pow(MathF.Tan(quarterPi * x), 1.4f);
+        const float quarterPi = Mathf.Pi / 4.0f;
+        return Mathf.Pow(Mathf.Tan(quarterPi * x), 1.4f);
     }
 
     public static double ResponseCurveTan(double x)
     {
-        const double quarterPi = MathF.PI / 4.0;
-        return Math.Pow(Math.Tan(quarterPi * x), 1.4);
+        const double quarterPi = Mathf.Pi / 4.0;
+        return Mathf.Pow(Mathf.Tan(quarterPi * x), 1.4);
     }
 
     // Source: http://allenchou.net/2015/04/game-math-precise-control-over-numeric-springing/

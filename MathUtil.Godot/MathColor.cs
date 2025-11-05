@@ -11,7 +11,7 @@ public static class MathColor
 
     public static Color ExpDecay(Color a, Color b, float decay, float dt)
     {
-        return b.Add(a.Subtract(b)).Multiply(MathF.Exp(-decay*dt));
+        return b.Add(a.Subtract(b)).Multiply(Mathf.Exp(-decay*dt));
     }
 
     public static Color Add(this Color a, Color b)
