@@ -25,6 +25,23 @@ public static class MathUtil
         return value;
     }
 
+    public static double Approach(double value, double target, double rate)
+    {
+        if(value < target)
+            return Math.Min(value + rate, target);
+        else
+            return Math.Max(value - rate, target);
+    }
+
+    public static double Approach(ref double value, double target, double rate)
+    {
+        if(value < target)
+            value = Math.Min(value + rate, target);
+        else
+            value = Math.Max(value - rate, target);
+        return value;
+    }
+
     public static int Approach(int value, int target, int rate)
     {
         if(value < target)
@@ -60,6 +77,13 @@ public static class MathUtil
         return value;
     }
 
+    public static double ApproachNotExceeding(double value, double target, double rate)
+    {
+        if(Math.Abs(value) < Math.Abs(target))
+            value = Approach(value, target, rate);
+        return value;
+    }
+
     public static Vector3 ApproachNotExceeding(Vector3 value, Vector3 target, float rate)
     {
         return new(
@@ -70,6 +94,15 @@ public static class MathUtil
     }
 
     public static float MoveTo(float value, float target, float accel, float decel)
+    {
+        if(Math.Abs(value) < Math.Abs(target))
+            value = Approach(value, target, accel);
+        if(Math.Abs(value) > Math.Abs(target))
+            value = Approach(value, target, decel);
+        return value;
+    }
+
+    public static double MoveTo(double value, double target, double accel, double decel)
     {
         if(Math.Abs(value) < Math.Abs(target))
             value = Approach(value, target, accel);
@@ -109,7 +142,17 @@ public static class MathUtil
         return MathF.Sqrt(value);
     }
 
+    public static double Sqrt(double value)
+    {
+        return Math.Sqrt(value);
+    }
+
     public static float Sqr(float value)
+    {
+        return value*value;
+    }
+
+    public static double Sqr(double value)
     {
         return value*value;
     }
@@ -129,9 +172,20 @@ public static class MathUtil
         return MathF.Floor(value / interval) * interval;
     }
 
+    public static double Snap(double value, double interval)
+    {
+        return Math.Floor(value / interval) * interval;
+    }
+
     public static float Snap(ref float value, float interval)
     {
         value = MathF.Floor(value / interval) * interval;
+        return value;
+    }
+
+    public static double Snap(ref double value, double interval)
+    {
+        value = Math.Floor(value / interval) * interval;
         return value;
     }
 
@@ -168,9 +222,20 @@ public static class MathUtil
         return MathF.Ceiling(value / interval) * interval;
     }
 
+    public static double SnapCeiling(double value, double interval)
+    {
+        return Math.Ceiling(value / interval) * interval;
+    }
+
     public static float SnapCeiling(ref float value, float interval)
     {
         value = MathF.Ceiling(value / interval) * interval;
+        return value;
+    }
+
+    public static double SnapCeiling(ref double value, double interval)
+    {
+        value = Math.Ceiling(value / interval) * interval;
         return value;
     }
 
@@ -217,7 +282,17 @@ public static class MathUtil
         return (int)Math.Round(value);
     }
 
+    public static int RoundToInt(double value)
+    {
+        return (int)Math.Round(value);
+    }
+
     public static int CeilToInt(float value)
+    {
+        return (int)Math.Ceiling(value);
+    }
+
+    public static int CeilToInt(double value)
     {
         return (int)Math.Ceiling(value);
     }
@@ -227,7 +302,17 @@ public static class MathUtil
         return (int)Math.Floor(value);
     }
 
+    public static int FloorToInt(double value)
+    {
+        return (int)Math.Floor(value);
+    }
+
     public static int ClampToInt(float value, int a, int b)
+    {
+        return (int)Math.Clamp(value, a, b);
+    }
+
+    public static int ClampToInt(double value, int a, int b)
     {
         return (int)Math.Clamp(value, a, b);
     }
@@ -237,12 +322,27 @@ public static class MathUtil
         return (t - a)/(b - a);
     }
 
+    public static double InverseLerp(double a, double b, double t)
+    {
+        return (t - a)/(b - a);
+    }
+
     public static float InverseLerp01(float a, float b, float t)
     {
         return Clamp01((t - a)/(b - a));
     }
 
+    public static double InverseLerp01(double a, double b, double t)
+    {
+        return Clamp01((t - a)/(b - a));
+    }
+
     public static float Clamp01(float value)
+    {
+        return Math.Clamp(value, 0, 1);
+    }
+
+    public static double Clamp01(double value)
     {
         return Math.Clamp(value, 0, 1);
     }
@@ -258,6 +358,11 @@ public static class MathUtil
     public static float ExpDecay(float a, float b, float decay, float dt)
     {
         return b+(a-b)*MathF.Exp(-decay*dt);
+    }
+
+    public static double ExpDecay(double a, float b, double decay, double dt)
+    {
+        return b+(a-b)*Math.Exp(-decay*dt);
     }
 
     public static Vector2 ExpDecay(Vector2 a, Vector2 b, float decay, float dt)
@@ -280,9 +385,19 @@ public static class MathUtil
         return Math.Sign(a);
     }
 
+    public static int Sign(double a)
+    {
+        return Math.Sign(a);
+    }
+
     public static bool Approximately(float a, float b, float threshold)
     {
         return MathF.Abs(a - b) < threshold;
+    }
+
+    public static bool Approximately(double a, double b, double threshold)
+    {
+        return Math.Abs(a - b) < threshold;
     }
 
     public static float SmoothCos(float value, float exp)
@@ -290,7 +405,17 @@ public static class MathUtil
         return MathF.Pow(-0.5f * MathF.Cos(value * MathF.PI) + 0.5f, exp);
     }
 
+    public static double SmoothCos(double value, double exp)
+    {
+        return Math.Pow(-0.5 * Math.Cos(value * Math.PI) + 0.5, exp);
+    }
+
     public static float SmoothCosClamp(float value, float exp)
+    {
+        return SmoothCos(Clamp01(value), exp);
+    }
+
+    public static double SmoothCosClamp(double value, double exp)
     {
         return SmoothCos(Clamp01(value), exp);
     }
@@ -298,6 +423,11 @@ public static class MathUtil
     public static float RandomRange(float min, float max)
     {
         return Random.Shared.NextSingle() * (max - min) + min;
+    }
+
+    public static double RandomRange(double min, double max)
+    {
+        return Random.Shared.NextDouble() * (max - min) + min;
     }
 
     public static int RandomRange(int min, int max)
@@ -364,6 +494,11 @@ public static class MathUtil
     }
 
     public static float Mod(float a, float b)
+    {
+        return ((a % b) + b) % b;
+    }
+
+    public static double Mod(double a, double b)
     {
         return ((a % b) + b) % b;
     }
@@ -451,7 +586,7 @@ public static class MathUtil
 
     public static double ResponseCurveTan(double x)
     {
-        const double quarterPi = MathF.PI / 4.0;
+        const double quarterPi = Math.PI / 4.0;
         return Math.Pow(Math.Tan(quarterPi * x), 1.4);
     }
 
@@ -465,6 +600,19 @@ public static class MathUtil
         float detInv = 1.0f / (f + hhoo);
         float detX = f * current + deltaTime * velocity + hhoo * target;
         float detV = velocity + hoo * (target - current);
+        current = detX * detInv;
+        velocity = detV * detInv;
+    }
+
+    public static void Spring(ref double current, ref double velocity, double target, double dampingRatio, double frequency, double deltaTime)
+    {
+        double f = 1.0 + 2.0 * deltaTime * dampingRatio * frequency;
+        double oo = frequency * frequency;
+        double hoo = deltaTime * oo;
+        double hhoo = deltaTime * hoo;
+        double detInv = 1.0 / (f + hhoo);
+        double detX = f * current + deltaTime * velocity + hhoo * target;
+        double detV = velocity + hoo * (target - current);
         current = detX * detInv;
         velocity = detV * detInv;
     }
@@ -528,10 +676,24 @@ public static class MathUtil
         return (h, s, l);
     }
 
+    public static (double h, double s, double l) HsvToHsl(double h, double s, double v)
+    {
+        double l = v * (1d - s / 2d);
+        s = l is 0 or 1 ? 0d : (v - l) / Math.Min(l, 1 - l);
+        return (h, s, l);
+    }
+
     public static (float h, float s, float v) HslToHsv(float h, float s, float l)
     {
         float v = l + s * MathF.Min(l, 1 - l);
         s = (v is 0) ? 0f : 2 * (1f - l / v);
+        return (h, s, v);
+    }
+
+    public static (double h, double s, double v) HslToHsv(double h, double s, double l)
+    {
+        double v = l + s * Math.Min(l, 1 - l);
+        s = (v is 0) ? 0d : 2 * (1d - l / v);
         return (h, s, v);
     }
 
