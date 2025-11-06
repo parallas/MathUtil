@@ -556,14 +556,30 @@ public static class MathUtil
         return ToVector3(vector.ToVector2(), yTangent, tangent);
     }
 
-    // Point.ToVector2 is already present in MonoGame
+    /// <summary>
+    /// Warning: this method is redundant with the <see cref="Point.ToVector2"/> <see langword="method"/>, and is only kept to maintain parity with other versions of <see cref="MathUtil"/>.
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <returns></returns>
+    public static Vector2 ToVector2(Point vector)
+    {
+        return vector.ToVector2();
+    }
 
     public static Vector2 ToVector2(this Vector3 vector, bool yTangent = false)
     {
         return new Vector2(vector.X, yTangent ? vector.Z : vector.Y);
     }
 
-    // Vector2.ToPoint is already present in MonoGame
+    /// <summary>
+    /// Warning: this method is redundant with the <see cref="Vector2.ToPoint"/> <see langword="method"/>, and is only kept to maintain parity with other versions of <see cref="MathUtil"/>.
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <returns></returns>
+    public static Point ToPoint(Vector2 vector)
+    {
+        return vector.ToPoint();
+    }
 
     public static float ResponseCurveSine(float x)
     {
