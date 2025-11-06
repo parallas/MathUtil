@@ -432,7 +432,7 @@ public static class MathUtil
         return new Vector2(vector.X, yTangent ? vector.Z : vector.Y);
     }
 
-    public static Vector2I ToVector2I(this Vector2 vector)
+    public static Vector2I ToPoint(this Vector2 vector)
     {
         return new Vector2I((int)vector.X, (int)vector.Y);
     }

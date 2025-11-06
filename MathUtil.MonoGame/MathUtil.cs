@@ -421,20 +421,14 @@ public static class MathUtil
         return ToVector3(vector.ToVector2(), yTangent, tangent);
     }
 
-    public static Vector2 ToVector2(this Point vector)
-    {
-        return new Vector2(vector.X, vector.Y);
-    }
+    // Point.ToVector2 is already present in MonoGame
 
     public static Vector2 ToVector2(this Vector3 vector, bool yTangent = false)
     {
         return new Vector2(vector.X, yTangent ? vector.Z : vector.Y);
     }
 
-    public static Point ToPoint(this Vector2 vector)
-    {
-        return new Point((int)vector.X, (int)vector.Y);
-    }
+    // Vector2.ToPoint is already present in MonoGame
 
     public static float ResponseCurveSine(float x)
     {
